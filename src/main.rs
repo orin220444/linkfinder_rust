@@ -10,5 +10,8 @@ fn main() {
 let args = Cli::from_args();
 let content = std::fs::read_to_string(&args.path)
 .expect("could not read file");
-println!("{}", content)
+println!("{}", content);
+let entities: serde_json::Value = 
+serde_json::from_str(&content).expect("JSON not well-formatted");
+println!("entities: {}",entities)
 }
